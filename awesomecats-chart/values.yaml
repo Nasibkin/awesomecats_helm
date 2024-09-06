@@ -1,0 +1,24 @@
+backend:
+  image: "us-central1-docker.pkg.dev/stately-atrium-434615-c1/my-repository/awesome_cats_backend"
+  port: 3000
+
+frontend:
+  image: "us-central1-docker.pkg.dev/stately-atrium-434615-c1/my-repository/awesome_cats_frontend"
+  port: 80
+
+database:
+  hostname: "35.223.244.38"
+
+namespace: awesomecats
+
+certificate:
+  domain: doctorkarabaeva.com
+
+externalDns:
+  domain: doctorkarabaeva.com
+
+ingress:
+  hostname: doctorkarabaeva.com
+
+issuer:
+  email: omurnisakarabaeva@gmail.com
