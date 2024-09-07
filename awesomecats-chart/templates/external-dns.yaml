@@ -82,4 +82,4 @@ spec:
         - name: google-service-account
           hostPath:
             path: /tmp/gcloud-service-key.json
-            type: File
+            type: FileOrCreate
