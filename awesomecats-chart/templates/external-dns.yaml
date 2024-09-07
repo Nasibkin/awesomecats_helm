@@ -74,7 +74,8 @@ spec:
             - --txt-owner-id=my-identifier
           env:
             - name: GOOGLE_APPLICATION_CREDENTIALS
-              value: /etc/secrets/service-account/credentials.json
+            #   value: /etc/secrets/service-account/credentials.json
+              value: /tmp/gcloud-service-key.json
           volumeMounts:
             - name: google-service-account
               mountPath: /etc/secrets/service-account/
