@@ -3,12 +3,17 @@ kind: Namespace
 metadata:
   name: external-dns
 ---
-# apiVersion: v1
-# kind: ServiceAccount
-# metadata:
-#   name: external-dns
-#   labels:
-#     app.kubernetes.io/name: external-dns
+
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: external-dns
+  namespace: external-dns
+  annotations:
+    iam.gke.io/gcp-service-account: "stately@stately-atrium-434615-c1.iam.gserviceaccount.com"
+  labels:
+    app.kubernetes.io/name: external-dns
+
 # ---
 # apiVersion: rbac.authorization.k8s.io/v1
 # kind: ClusterRole
