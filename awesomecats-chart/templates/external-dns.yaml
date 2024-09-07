@@ -71,14 +71,14 @@ spec:
             - --registry=txt
             - --txt-owner-id=my-identifier
           # uncomment below if static credentials are used  
-          env:
-            - name: GOOGLE_APPLICATION_CREDENTIALS
-              value: /etc/secrets/external-dns/external-dns.json
-          volumeMounts:
-            - name: external-dns-secret
-              mountPath: /etc/secrets/external-dns/
-          volumes:
-            - name: external-dns-secret
-              secret:
-                secretName: external-dns
+        #   env:
+        #     - name: GOOGLE_APPLICATION_CREDENTIALS
+        #       value: /etc/secrets/external-dns/external-dns.json
+        #   volumeMounts:
+        #     - name: external-dns-secret
+        #       mountPath: /etc/secrets/external-dns/
+        #   volumes:
+        #     - name: external-dns-secret
+        #       secret:
+        #         secretName: external-dns
 
