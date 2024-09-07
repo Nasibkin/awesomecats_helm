@@ -2,6 +2,7 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: external-dns
+  namespace: awesomecats
   annotations:
     iam.gke.io/gcp-service-account: "stately@stately-atrium-434615-c1.iam.gserviceaccount.com"
   labels:
@@ -16,11 +17,12 @@ metadata:
     app.kubernetes.io/name: external-dns
 rules:
   - apiGroups: [""]
-    resources: ["services","endpoints","pods","nodes"]
-    verbs: ["get","watch","list"]
-  - apiGroups: ["extensions","networking.k8s.io"]
+    resources: ["services", "endpoints", "pods", "nodes"]
+    verbs: ["get", "watch", "list"]
+  - apiGroups: ["extensions", "networking.k8s.io"]
     resources: ["ingresses"]
-    verbs: ["get","watch","list"]
+    verbs: ["get", "watch", "list"]
+
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
@@ -35,15 +37,16 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: external-dns
-    namespace: default
+    namespace: awesomecats
+
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: external-dns
-  namespace: {{ .Values.namespace }}
+  namespace: awesomecats
   labels:
-    app.kubernetes.io/name: external-dns  
+    app.kubernetes.io/name: external-dns
 spec:
   strategy:
     type: Recreate
@@ -62,100 +65,21 @@ spec:
           args:
             - --source=service
             - --source=ingress
-            - --domain-filter={{ .Values.externalDns.domain }} 
+            - --domain-filter={{ .Values.externalDns.domain }}
             - --provider=google
-            - --log-format=json 
-    #        - --google-project=my-cloud-dns-project # Use this to specify a project different from the one external-dns is running inside
-            - --google-zone-visibility=public # Use this to filter to only zones with this visibility. Set to either 'public' or 'private'. Omitting will match public and private zones
-            - --policy=upsert-only # would prevent ExternalDNS from deleting any records, omit to enable full synchronization
+            - --log-format=json
+            - --google-zone-visibility=public
+            - --policy=upsert-only
             - --registry=txt
             - --txt-owner-id=my-identifier
-          # uncomment below if static credentials are used  
-          apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: external-dns
-  annotations:
-    iam.gke.io/gcp-service-account: "stately@stately-atrium-434615-c1.iam.gserviceaccount.com"
-  labels:
-    app.kubernetes.io/name: external-dns
-
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
-metadata:
-  name: external-dns
-  labels:
-    app.kubernetes.io/name: external-dns
-rules:
-  - apiGroups: [""]
-    resources: ["services","endpoints","pods","nodes"]
-    verbs: ["get","watch","list"]
-  - apiGroups: ["extensions","networking.k8s.io"]
-    resources: ["ingresses"]
-    verbs: ["get","watch","list"]
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
-metadata:
-  name: external-dns-viewer
-  labels:
-    app.kubernetes.io/name: external-dns
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: external-dns
-subjects:
-  - kind: ServiceAccount
-    name: external-dns
-    namespace: default
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: external-dns
-  namespace: {{ .Values.namespace }}
-  labels:
-    app.kubernetes.io/name: external-dns  
-spec:
-  strategy:
-    type: Recreate
-  selector:
-    matchLabels:
-      app.kubernetes.io/name: external-dns
-  template:
-    metadata:
-      labels:
-        app.kubernetes.io/name: external-dns
-    spec:
-      serviceAccountName: external-dns
-      containers:
-        - name: external-dns
-          image: registry.k8s.io/external-dns/external-dns:v0.14.2
-          args:
-            - --source=service
-            - --source=ingress
-            - --domain-filter={{ .Values.externalDns.domain }} 
-            - --provider=google
-            - --log-format=json 
-    #        - --google-project=my-cloud-dns-project # Use this to specify a project different from the one external-dns is running inside
-            - --google-zone-visibility=public # Use this to filter to only zones with this visibility. Set to either 'public' or 'private'. Omitting will match public and private zones
-            - --policy=upsert-only # would prevent ExternalDNS from deleting any records, omit to enable full synchronization
-            - --registry=txt
-            - --txt-owner-id=my-identifier
-          # uncomment below if static credentials are used  
           env:
             - name: GOOGLE_APPLICATION_CREDENTIALS
-              value: /etc/secrets/external-dns/external-dns.json
+              value: /etc/secrets/external-dns/gcloud-service-key.json
           volumeMounts:
             - name: external-dns-secret
               mountPath: /etc/secrets/external-dns/
-          volumes:
-            - name: external-dns-secret
-              secret:
-                secretName: external-dns
+              readOnly: true
       volumes:
         - name: external-dns-secret
           secret:
             secretName: external-dns
-
