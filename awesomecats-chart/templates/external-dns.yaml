@@ -78,8 +78,9 @@ spec:
           volumeMounts:
             - name: google-service-account
               mountPath: /etc/secrets/service-account/
-      volumes:
-        - name: google-service-account
-          hostPath:
-            path: /tmp/gcloud-service-key.json
-            type: FileOrCreate
+              readOnly: true
+            volumes:
+            - name: google-service-account
+                hostPath:
+                path: /tmp/gcloud-service-key.json
+                type: File
