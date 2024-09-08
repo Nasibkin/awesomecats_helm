@@ -12,13 +12,13 @@ database:
 namespace: awesomecats
 
 certificate:
-  domain: api.doctorkarabaeva.com
+  domain: doctorkarabaeva.com
 
 externalDns:
-  domain: api.doctorkarabaeva.com
+  domain: doctorkarabaeva.com
 
 ingress:
-  hostname: api.doctorkarabaeva.com
+  hostname: doctorkarabaeva.com
 
 issuer:
   email: omurnisakarabaeva@gmail.com
