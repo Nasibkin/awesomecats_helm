@@ -11,6 +11,8 @@ database:
 
 namespace: awesomecats
 
+gcp_service_account: "stately@final-devops-project.iam.gserviceaccount.com"
+
 certificate:
   domain: doctorkarabaeva.com
 
