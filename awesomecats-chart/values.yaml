@@ -14,13 +14,13 @@ namespace: awesomecats
 gcp_service_account: "stately@final-devops-project.iam.gserviceaccount.com"
 
 certificate:
-  domain: test.doctorkarabaeva.com
+  domain: doctorkarabaeva.com
 
 externalDns:
-  domain: test.doctorkarabaeva.com
+  domain: doctorkarabaeva.com
 
 ingress:
-  hostname: test.doctorkarabaeva.com
+  hostname: doctorkarabaeva.com
 
 issuer:
   email: omurnisakarabaeva@gmail.com
