@@ -1,10 +1,10 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: web-nasi-ssl
+  name: web-ssl
   namespace: {{ .Values.namespace }}
 spec:
-  secretName: web-nasi-ssl
+  secretName: web-ssl
   issuerRef:
     name: letsencrypt-production
     kind: ClusterIssuer
