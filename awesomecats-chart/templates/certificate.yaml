@@ -4,7 +4,7 @@ metadata:
   name: web-ssl
   namespace: {{ .Values.namespace }}
 spec:
-  secretName: web-ssl
+  secretName: webs-ssl
   issuerRef:
     name: letsencrypt-production
     kind: ClusterIssuer
