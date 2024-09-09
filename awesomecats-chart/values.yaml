@@ -1,9 +1,9 @@
 backend:
-  image: "us-central1-docker.pkg.dev/stately-atrium-434615-c1/my-repository/awesome_cats_backend"
+  image: "us-central1-docker.pkg.dev/final-devops-project/my-repository/awesome_cats_backend"
   port: 3000
 
 frontend:
-  image: "us-central1-docker.pkg.dev/stately-atrium-434615-c1/my-repository/awesome_cats_frontend"
+  image: "us-central1-docker.pkg.dev/final-devops-project/my-repository/awesome_cats_frontend"
   port: 80
 
 database:
