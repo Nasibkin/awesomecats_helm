@@ -14,7 +14,7 @@ namespace: awesomecats
 gcp_service_account: "stately@final-devops-project.iam.gserviceaccount.com"
 
 certificate:
-  domain: api.doctorkarabaeva.com
+  domain: nasi.doctorkarabaeva.com
 
 externalDns:
   domain: doctorkarabaeva.com
