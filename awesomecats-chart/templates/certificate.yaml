@@ -10,4 +10,4 @@ spec:
     kind: ClusterIssuer
   commonName: {{ .Values.certificate.domain }}
   dnsNames:
-  - {{ .Values.certificate.domain }}
+  - {{ .Values.certificate.domain }} 
