@@ -3,8 +3,8 @@ kind: ServiceAccount
 metadata:
   name: external-dns
   namespace: {{ .Values.namespace }}
-  annotations:
-    iam.gke.io/gcp-service-account: {{ .Values.gcp_service_account }}
+  # annotations:
+  #   iam.gke.io/gcp-service-account: {{ .Values.gcp_service_account }}
   labels:
     app.kubernetes.io/name: external-dns
 
@@ -37,7 +37,7 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: external-dns
-    namespace: awesomecats
+    namespace: {{ .Values.namespace }}
 
 ---
 apiVersion: apps/v1
