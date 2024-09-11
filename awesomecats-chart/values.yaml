@@ -7,7 +7,7 @@ frontend:
   port: 80
 
 database:
-  hostname: "35.223.244.38"
+  hostname: "34.44.38.246"
 
 namespace: awesomecats
 
