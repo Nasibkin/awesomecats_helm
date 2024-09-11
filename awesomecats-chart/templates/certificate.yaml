@@ -1,13 +1,13 @@
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: web-ssl
-  namespace: {{ .Values.namespace }}
-spec:
-  secretName: web-ssl
-  issuerRef:
-    name: letsencrypt-staging
-    kind: ClusterIssuer
-  commonName: {{ .Values.certificate.domain }}
-  dnsNames:
-  - {{ .Values.certificate.domain }}
+# apiVersion: cert-manager.io/v1
+# kind: Certificate
+# metadata:
+#   name: web-ssl-cert
+#   namespace: {{ .Values.namespace }}
+# spec:
+#   secretName: web-ssl
+#   issuerRef:
+#     name: letsencrypt-production
+#     kind: ClusterIssuer
+#   commonName: {{ .Values.certificate.domain }}
+#   dnsNames:
+#   - {{ .Values.certificate.domain }}
