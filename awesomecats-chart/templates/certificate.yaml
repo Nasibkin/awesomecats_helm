@@ -1,20 +1,13 @@
 # apiVersion: cert-manager.io/v1
 # kind: Certificate
 # metadata:
-#   name: web-ssl
+#   name: web-ssl-cert
 # #   namespace: {{ .Values.namespace }}
 # spec:
-#   secretName: web-ssl-tls
-#   privateKey:
-#     algorithm: RSA
-#     encoding: PKCS1
-#     size: 2048
-
+# #   secretName: web-ssl
 #   issuerRef:
 #     name: letsencrypt-production
-#     kind: Issuer
+#     kind: ClusterIssuer
 #   commonName: {{ .Values.certificate.domain }}
 #   dnsNames:
 #   - {{ .Values.certificate.domain }} 
-#   - www.nasibaexample.com
-#   - api.nasibaexample.com
