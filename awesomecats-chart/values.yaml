@@ -17,10 +17,10 @@ certificate:
   domain: dom.nasibaexample.online
 
 externalDns:
-  domain: nasibaexample.online
+  domain: dom.nasibaexample.online
 
 ingress:
-  hostname: nasibaexample.online
+  hostname: dom.nasibaexample.online
 
 issuer:
   email: omurnisakarabaeva@gmail.com
