@@ -12,10 +12,10 @@ metadata:
     # kubernetes.io/ingress.class: nginx
 spec:
   ingressClassName: nginx
-  tls:
-  - hosts:
-    - {{ .Values.ingress.hostname }}
-    secretName: awesome-cats-cert
+#   tls:
+#   - hosts:
+#     - {{ .Values.ingress.hostname }}
+#     secretName: awesome-cats-cert
   rules:
   - host: {{ .Values.ingress.hostname }}
     http:
