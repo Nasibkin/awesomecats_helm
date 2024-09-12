@@ -4,9 +4,9 @@ metadata:
   name: frontend-ingress
   namespace: {{ .Values.namespace }}
   annotations:
-    # cert-manager.io/cluster-issuer: letsencrypt-production
+    cert-manager.io/cluster-issuer: letsencrypt-production
     external-dns.alpha.kubernetes.io/zone: public
-    # external-dns.alpha.kubernetes.io/hostname: {{ .Values.ingress.hostname }}
+    external-dns.alpha.kubernetes.io/hostname: {{ .Values.ingress.hostname }}
     # kubernetes.io/ingress.class: nginx
     kubernetes.io/ingress.class: gce
     nginx.ingress.kubernetes.io/use-regex: "true"
