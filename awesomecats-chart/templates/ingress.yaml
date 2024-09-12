@@ -4,8 +4,8 @@ metadata:
   name: frontend-ingress
   # namespace: {{ .Values.namespace }}
   annotations: 
-    cert-manager.io/cluster-issuer: letsencrypt-production
-    external-dns.alpha.kubernetes.io/hostname: {{ .Values.ingress.hostname }}
+    # cert-manager.io/cluster-issuer: letsencrypt-production this
+    # external-dns.alpha.kubernetes.io/hostname: {{ .Values.ingress.hostname }} this
     nginx.ingress.kubernetes.io/use-regex: "true"
     nginx.ingress.kubernetes.io/rewrite-target: /$1
     # external-dns.alpha.kubernetes.io/zone: public
