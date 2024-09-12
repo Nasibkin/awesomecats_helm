@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: frontend-ingress
   # namespace: {{ .Values.namespace }}
-  annotations:
+  annotations: 
     cert-manager.io/cluster-issuer: letsencrypt-staging
     external-dns.alpha.kubernetes.io/hostname: {{ .Values.ingress.hostname }}
     nginx.ingress.kubernetes.io/use-regex: "true"
