@@ -9,17 +9,15 @@ metadata:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/use-regex: "true"
     nginx.ingress.kubernetes.io/rewrite-target: /$1
-    cert-manager.io/cluster-issuer: letsencrypt-staging
+    # cert-manager.io/cluster-issuer: letsencrypt-staging
 spec:
   ingressClassName: nginx
-  tls:
-  - hosts:
-    # - {{ .Values.ingress.hostname }}
-    - nasibaexample.online
+#   tls:
+#   - hosts:
+#     - {{ .Values.ingress.hostname }}
     # secretName: web-ssl
   rules:
-#   - host: {{ .Values.ingress.hostname }}
-  - host: nasibaexample.online
+  - host: {{ .Values.ingress.hostname }}
     http:
       paths:
       - path: /?(.*)
