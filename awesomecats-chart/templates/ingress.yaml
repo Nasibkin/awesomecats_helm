@@ -4,18 +4,18 @@ metadata:
   name: frontend-ingress
   # namespace: {{ .Values.namespace }}
   annotations: 
-    # cert-manager.io/cluster-issuer: letsencrypt-production this
+    cert-manager.io/cluster-issuer: letsencrypt-production this
     external-dns.alpha.kubernetes.io/hostname: {{ .Values.ingress.hostname }} 
     nginx.ingress.kubernetes.io/use-regex: "true"
     nginx.ingress.kubernetes.io/rewrite-target: /$1
-    # external-dns.alpha.kubernetes.io/zone: public
+    external-dns.alpha.kubernetes.io/zone: public
     kubernetes.io/ingress.class: nginx
 spec:
   ingressClassName: nginx
-#   tls:
-#   - hosts:
-#     - {{ .Values.ingress.hostname }}
-#     secretName: awesome-cats-cert
+  tls:
+  - hosts:
+    - {{ .Values.ingress.hostname }}
+    secretName: awesome-cats-cert
   rules:
   - host: {{ .Values.ingress.hostname }}
     http:
