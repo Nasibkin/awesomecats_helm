@@ -20,7 +20,7 @@ externalDns:
   domain: nasibaexample.online
 
 ingress:
-  hostname: nasibaexample.online
+  hostname: api.nasibaexample.online
 
 issuer:
   email: omurnisakarabaeva@gmail.com
