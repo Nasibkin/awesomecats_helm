@@ -12,11 +12,11 @@ metadata:
     cert-manager.io/cluster-issuer: letsencrypt-staging
 spec:
   ingressClassName: nginx
-  tls:
-  - hosts:
-    # - {{ .Values.ingress.hostname }}
-    - nasibaexample.online
-    secretName: web-ssl
+#   tls:
+#   - hosts:
+#     # - {{ .Values.ingress.hostname }}
+#     - nasibaexample.online
+    # secretName: web-ssl
   rules:
 #   - host: {{ .Values.ingress.hostname }}
   - host: nasibaexample.online
